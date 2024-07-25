@@ -1,18 +1,18 @@
 (in-package :occt)
 
 (defvar *releasable-objects-table* (make-hash-table :test 'eql))
-(defvar *current_key* 'anonymous)
+(defvar *current-key* 'anonymous)
 
 (defmacro start-releasable-objects (key)
-  `(setf *current_key* ,key))
+  `(setf *current-key* ,key))
 
 (defmacro end-releasable-objects ()
-  `(setf *current_key* 'anonimous))
+  `(setf *current-key* 'anonimous))
 
 (defun add-releasable-object (obj)
-  (let ((list (gethash *current_key* *releasable-objects-table*)))
+  (let ((list (gethash *current-key* *releasable-objects-table*)))
     (setf list (append list (list obj)))
-    (setf (gethash *current_key* *releasable-objects-table*) list)))
+    (setf (gethash *current-key* *releasable-objects-table*) list)))
 
 (defmacro _new (instance &rest args)
   (if (not (stringp instance))
