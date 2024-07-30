@@ -367,12 +367,12 @@
 (defconstant +Quantity_NOC_OLIVEDRAB3+ 354)
 (defconstant +Quantity_NOC_OLIVEDRAB4+ 355)
 (defconstant +Quantity_NOC_ORANGE+ 356)
-(defconstant +Quantity_NOC_ORANGE1+ +Quantity_NOC_ORANGE+
+(defconstant +Quantity_NOC_ORANGE1+ +Quantity_NOC_ORANGE+)
 (defconstant +Quantity_NOC_ORANGE2+ 357)
 (defconstant +Quantity_NOC_ORANGE3+ 358)
 (defconstant +Quantity_NOC_ORANGE4+ 359)
 (defconstant +Quantity_NOC_ORANGERED+ 360)
-(defconstant +Quantity_NOC_ORANGERED1+ +Quantity_NOC_ORANGERED+
+(defconstant +Quantity_NOC_ORANGERED1+ +Quantity_NOC_ORANGERED+)
 (defconstant +Quantity_NOC_ORANGERED2+ 361)
 (defconstant +Quantity_NOC_ORANGERED3+ 362)
 (defconstant +Quantity_NOC_ORANGERED4+ 363)
