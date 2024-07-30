@@ -170,6 +170,6 @@
 (defconstant +Aspect_VKey_NavigationKeysLower+ +Aspect_VKey_NavInteract+)
 (defconstant +Aspect_VKey_NavigationKeysUpper+ +Aspect_VKey_NavSpeedDecrease+)
 (defconstant +Aspect_VKey_Upper+               +Aspect_VKey_NavSpeedDecrease+)
-(defconstant +Aspect_VKey_NB+                  (+  (- +Aspect_VKey_Upper+ Aspect_VKey_Lower) 1))
+(defconstant +Aspect_VKey_NB+                  (+  (- +Aspect_VKey_Upper+ +Aspect_VKey_Lower+) 1))
 (defconstant +Aspect_VKey_MAX+                 255)
 
