@@ -10,5 +10,6 @@
                (:file "Aspect_VKey")               
                (:file "occt-enums")               
                (:file "Quantity_NameOfColor")               
-               (:file "Quantity_TypeOfColor")
+               (:file "Quantity_TypeOfColor")                              
+               (:file "OpenGl_ShaderProgramDumpLevel")
                (:file "full-load-smokeocct-lib")))
