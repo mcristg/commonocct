@@ -76,9 +76,9 @@
             (loop while (#_More a-face-explorer)
 		  do (let ((face (#_TopoDS::Face (#_Current a-face-explorer))))
 		       ;; Check if <aFace> is the top face of the bottle’s neck
-		       (let ((surface (#_BRep_Tool::Surface face)))
-			 (when (cffi:pointer-eq (#_DynamicType (#_handle_Geom_Surface::get surface)) (#_Geom_Plane::get_type_descriptor))
-			   (let ((a-pnt (#_Location (cast "Geom_Plane" (#_handle_Geom_Surface::get surface)))))
+		       (let ((surface (#_handle_Geom_Surface::get (#_BRep_Tool::Surface face))))
+			 (when (cffi:pointer-eq (#_DynamicType surface) (#_Geom_Plane::get_type_descriptor))
+			   (let ((a-pnt (#_Location (cast "Geom_Plane" surface))))
 			     (when (> (#_Z a-pnt) z-max)
 			       (setq z-max (#_Z a-pnt)
 				     face-to-remove face))))))
@@ -100,12 +100,16 @@
                  (an-ax2d (_new "gp_Ax2d" a-pnt a-dir))
                  (a-major (* 2 pi))
                  (a-minor (/ my-neck-height 10.0d0))
-                 (an-ellipse1 (#_get_handle (_new "handle_Geom2d_Ellipse" (#_new Geom2d_Ellipse an-ax2d a-major a-minor))))
-                 (an-ellipse2 (#_get_handle (_new "handle_Geom2d_Ellipse" (#_new Geom2d_Ellipse an-ax2d a-major (/ a-minor 4.0d0)))))
-                 (an-arc1 (#_get_handle (_new "handle_Geom2d_TrimmedCurve" (#_new Geom2d_TrimmedCurve an-ellipse1 0.0d0 pi))))
-                 (an-arc2 (#_get_handle (_new "handle_Geom2d_TrimmedCurve" (#_new Geom2d_TrimmedCurve an-ellipse2 0.0d0 pi))))
-                 (an-ellipse-pnt1 (#_Value (#_handle_Geom2d_Ellipse::get an-ellipse1) 0.0d0))
-                 (an-ellipse-pnt2 (#_Value (#_handle_Geom2d_Ellipse::get an-ellipse1) pi))
+                 (an-ellipse1 (#_new Geom2d_Ellipse an-ax2d a-major a-minor))
+                 (an-ellipse2 (#_new Geom2d_Ellipse an-ax2d a-major (/ a-minor 4.0d0)))
+                 (an-arc1 (#_get_handle (_new "handle_Geom2d_TrimmedCurve"
+					      (#_new Geom2d_TrimmedCurve
+						     (#_get_handle (_new "handle_Geom2d_Ellipse" an-ellipse1)) 0.0d0 pi))))
+                 (an-arc2 (#_get_handle (_new "handle_Geom2d_TrimmedCurve"
+					      (#_new Geom2d_TrimmedCurve
+						     (#_get_handle (_new "handle_Geom2d_Ellipse" an-ellipse2)) 0.0d0 pi))))
+                 (an-ellipse-pnt1 (#_Value an-ellipse1 0.0d0))
+                 (an-ellipse-pnt2 (#_Value an-ellipse1 pi))
                  (a-segment (_new "GCE2d_MakeSegment" an-ellipse-pnt1 an-ellipse-pnt2))
 
 		 ;; Threading : Build Edges and Wires
