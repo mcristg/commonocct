@@ -85,7 +85,7 @@
 		     (#_Next a-face-explorer))
 	    (#_Append faces-to-remove face-to-remove)
 	    (let ((thick-solid (_new "BRepOffsetAPI_MakeThickSolid")))
-	      (#_MakeThickSolidByJoin thick-solid my-body (#_ListOfShape faces-to-remove) (/ (- my-thickness) 50.0d0) 1.0d-3)
+	      (#_MakeThickSolidByJoin thick-solid my-body (#_get faces-to-remove) (/ (- my-thickness) 50.0d0) 1.0d-3)
 	      (setq my-body (#_Shape thick-solid))))
 
           (let* (;; Threading : Create Surfaces
