@@ -40,3 +40,9 @@
 		(remhash key *releasable-objects-table*)))
 	    (return))))))
 
+(defmacro qt::_new (instance &rest args)
+  (if (not (stringp instance))
+      (error "The instance argument must be a string.")
+      `(let ((new ((lambda () (optimized-new ,instance ,@args)))))
+	 (add-releasable-object new)
+         new)))
