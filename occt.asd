@@ -18,4 +18,5 @@
                (:file "Graphic3d_DiagnosticInfo")
                (:file "AIS_DisplayMode")
                (:file "Message_Gravity")
+               (:file "STEPControl_StepModelType")
                (:file "full-load-smokeocct-lib")))

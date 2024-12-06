@@ -141,6 +141,6 @@
                  
 (let ((a-bottle (occt::make-bottle)))
   (with-objects ((aStepWriter (#_new STEPControl_Writer)))
-   (#_Transfer aStepWriter a-bottle 0)
-   (#_Write aStepWriter (uiop:native-namestring "~/dev/commonocct/aBottle.stp"))
+    (#_Transfer aStepWriter a-bottle +STEPControl_AsIs+)
+    (#_Write aStepWriter (uiop:native-namestring "~/dev/commonocct/aBottle.stp"))
     (release-objects 'make-bottle)))
