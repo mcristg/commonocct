@@ -1,6 +1,6 @@
 
 (defpackage :occt
-  (:use :cl :qt)
+  (:use :cl)
   (:nicknames :oc)
   (:export #:start-releasable-objects
            #:end-releasable-objects

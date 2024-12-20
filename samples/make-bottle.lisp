@@ -7,7 +7,7 @@
 
 (in-package :occt)
 (named-readtables:in-readtable :qt)
-(ensure-smoke :qtcore)
+(qt:ensure-smoke :qtcore)
 
 (full-load-smokeocct-lib)
 
@@ -78,7 +78,7 @@
 		       ;; Check if <aFace> is the top face of the bottle’s neck
 		       (let ((surface (#_handle_Geom_Surface::get (#_BRep_Tool::Surface face))))
 			 (when (cffi:pointer-eq (#_DynamicType surface) (#_Geom_Plane::get_type_descriptor))
-			   (let ((a-pnt (#_Location (cast "Geom_Plane" surface))))
+			   (let ((a-pnt (#_Location (qt:cast "Geom_Plane" surface))))
 			     (when (> (#_Z a-pnt) z-max)
 			       (setq z-max (#_Z a-pnt)
 				     face-to-remove face))))))
@@ -140,7 +140,7 @@
 		a-res))))))))
                  
 (let ((a-bottle (occt::make-bottle)))
-  (with-objects ((aStepWriter (#_new STEPControl_Writer)))
+  (qt:with-objects ((aStepWriter (#_new STEPControl_Writer)))
     (#_Transfer aStepWriter a-bottle +STEPControl_AsIs+)
     (#_Write aStepWriter (uiop:native-namestring "~/dev/commonocct/aBottle.stp"))
     (release-objects 'make-bottle)))
