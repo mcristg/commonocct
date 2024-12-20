@@ -19,4 +19,5 @@
                (:file "AIS_DisplayMode")
                (:file "Message_Gravity")
                (:file "STEPControl_StepModelType")
-               (:file "full-load-smokeocct-lib")))
+               (:file "full-load-smokeocct-lib")
+               (:file "V3d_TypeOfOrientation")))
