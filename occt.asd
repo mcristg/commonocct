@@ -14,6 +14,7 @@
                (:file "OpenGl_ShaderProgramDumpLevel")
                (:file "Aspect_GridDrawMode")
                (:file "Aspect_GridType")
+               (:file "Aspect_TypeOfTriedronPosition")
                (:file "Graphic3d_RenderTransparentMethod")
                (:file "Graphic3d_DiagnosticInfo")
                (:file "AIS_DisplayMode")

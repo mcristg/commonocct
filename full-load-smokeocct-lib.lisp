@@ -87,5 +87,6 @@
     ;(qt:ensure-smoke :TKXSDRAWGLTF)
     (qt:ensure-smoke :TKXSDRAWVRML)
     (qt:ensure-smoke :TKXSDRAWPLY)
-    (qt:ensure-smoke :TKXSDRAWSTL)))
+    (qt:ensure-smoke :TKXSDRAWSTL)
+    (qt:ensure-smoke :occwindow)))
 
