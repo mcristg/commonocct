@@ -11,7 +11,7 @@
 (defconstant +Aspect_TOTP_BOTTOM+      #x0002)             ;< at the middle of the bottom side
 (defconstant +Aspect_TOTP_LEFT+        #x0004)             ;< at the middle of the left   side
 (defconstant +Aspect_TOTP_RIGHT+       #x0008)             ;< at the middle of the right  side
-(defconstant +Aspect_TOTP_LEFT_LOWER+ (logior +Aspect_TOTP_BOTTOM+ Aspect_TOTP_LEFT))     ;< at the left lower corner
+(defconstant +Aspect_TOTP_LEFT_LOWER+ (logior +Aspect_TOTP_BOTTOM+ +Aspect_TOTP_LEFT+))   ;< at the left lower corner
 (defconstant +Aspect_TOTP_LEFT_UPPER+ (logior +Aspect_TOTP_TOP+ +Aspect_TOTP_LEFT+))      ;< at the left upper corner
 (defconstant +Aspect_TOTP_RIGHT_LOWER+ (logior +Aspect_TOTP_BOTTOM+ +Aspect_TOTP_RIGHT+)) ;< at the right lower corner
 (defconstant +Aspect_TOTP_RIGHT_UPPER+ (logior +Aspect_TOTP_TOP+ +Aspect_TOTP_RIGHT+))    ;< at the right upper corner
