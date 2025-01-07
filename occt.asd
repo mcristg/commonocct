@@ -13,6 +13,7 @@
                (:file "Aspect_GridType")
                (:file "Aspect_TypeOfTriedronPosition")
                (:file "Aspect_VKey")
+               (:file "Aspect_VKeyFlags")
                (:file "full-load-smokeocct-lib")
                (:file "Graphic3d_DiagnosticInfo")
                (:file "Graphic3d_RenderingMode")
