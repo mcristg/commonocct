@@ -88,5 +88,7 @@
     (qt:ensure-smoke :TKXSDRAWVRML)
     (qt:ensure-smoke :TKXSDRAWPLY)
     (qt:ensure-smoke :TKXSDRAWSTL)
-    (qt:ensure-smoke :occwindow)))
+    
+    ;; OpenCASCADE/Qt Visualization
+    (qt:ensure-smoke :TKQt3D)))
 

@@ -3,3 +3,6 @@
 *~
 system-index.txt
 samples/*~
+samples/tmp
+samples/.vscode
+lispify/

@@ -3,13 +3,22 @@
 ;; (load "~/dev/commonocct/commonocct/samples/make-bottle.lisp")
 ;; sbcl --dynamic-space-size 4096
 
-(ql:quickload :occt)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+(ql:quickload :occt))
 
-(in-package :occt)
+(defpackage #:bottle
+  (:use #:common-lisp #:qt #:occt))
+
+(in-package #:bottle)
+
+(defun init-occ-qt()
+  (ensure-smoke :qtcore)
+  (ensure-smoke :qtgui)
+  (ensure-smoke :qtwidgets)
+  (full-load-smokeocct-lib))
+
+(init-occ-qt)
 (named-readtables:in-readtable :qt)
-(qt:ensure-smoke :qtcore)
-
-(full-load-smokeocct-lib)
 
 (defun make-bottle (&optional (my-width 50) (my-height 70) (my-thickness 30))
   (start-releasable-objects 'make-bottle)
@@ -139,7 +148,7 @@
 		(end-releasable-objects)
 		a-res))))))))
                  
-(let ((a-bottle (occt::make-bottle)))
+(let ((a-bottle (make-bottle)))
   (qt:with-objects ((aStepWriter (#_new STEPControl_Writer)))
     (#_Transfer aStepWriter a-bottle +STEPControl_AsIs+)
     (#_Write aStepWriter (uiop:native-namestring "~/dev/commonocct/aBottle.stp"))
