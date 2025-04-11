@@ -31,4 +31,4 @@
                (:file "STEPControl_StepModelType")
                (:file "V3d_TypeOfOrientation")
                (:file "V3d_TypeOfVisualization")
-               (:file "qclass-type")))
+               (:file "qclass-typep")))

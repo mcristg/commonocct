@@ -5,7 +5,7 @@
   (declare (ignore instance))
   (with-objects ((about (#_new QMessageBox)))
     (#_setText about "commonOCCT")
-    (#_setInformativeText about "Compiled with Qt 5.15.15 and OpenCASCADE 7.8.1<br><br>
+    (#_setInformativeText about "Compiled with Qt 5.15.15 and OpenCASCADE 7.9.0<br><br>
                         Bottle is a demo application about commonQt and OpenCASCADE.<br><br>
                         Lucide icons are licensed under the
                         <a href=\"https://github.com/lucide-icons/lucide/blob/master/LICENSE\">ISC License</a><br>
