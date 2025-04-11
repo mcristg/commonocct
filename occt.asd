@@ -2,7 +2,7 @@
   :description "Interface for the Open CASCADE Technology libraries."
   :author "mcristg mcristernag@gmail.com"
   :maintainer ""
-  :version "7.8.1"
+  :version "7.9.0"
   :license "BSD"
   :depends-on (:qt)
   :components ((:file "package")
