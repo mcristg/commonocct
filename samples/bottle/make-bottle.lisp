@@ -149,7 +149,7 @@
          (my-body (create-hollowed-solid body+neck my-thickness))
          (my-threading (add-thread-neck my-height my-neck-height my-neck-radius))
          (a-res (#!_new TopoDS_Compound)))
-    (with-objects ((a-builder (#!_new BRep_Builder)))
+    (with-objects ((a-builder (#_new BRep_Builder)))
       (#_MakeCompound a-builder a-res)
       (#_Add a-builder a-res my-body)
       (#_Add a-builder a-res my-threading)
