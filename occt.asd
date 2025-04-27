@@ -11,6 +11,7 @@
                (:file "AIS_SelectionScheme")
                (:file "Aspect_GridDrawMode")
                (:file "Aspect_GridType")
+               (:file "Aspect_TypeOfLine")
                (:file "Aspect_TypeOfTriedronPosition")
                (:file "Aspect_VKey")
                (:file "Aspect_VKeyFlags")
