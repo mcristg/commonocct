@@ -1,6 +1,6 @@
 ;;; https://github.com/Open-Cascade-SAS/OCCT/blob/master/samples/qt/Tutorial/src/MakeBottle.cxx
 
-;; (load "~/dev/commonocct/commonocct/samples/make-bottle.lisp")
+;; (load "~/dev/commonocct/commonocct/samples/make-bottle1.lisp")
 ;; sbcl --dynamic-space-size 4096
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
@@ -85,7 +85,7 @@
             (loop while (#_More a-face-explorer)
 		  do (let ((face (#_TopoDS::Face (#_Current a-face-explorer))))
 		       ;; Check if <aFace> is the top face of the bottle’s neck
-		       (let ((surface (#_handle_Geom_Surface::get (#_BRep_Tool::Surface face))))
+		       (let ((surface (#_handle_Standard_Transient::get_Geom_Surface (#_BRep_Tool::Surface face))))
 			 (when (cffi:pointer-eq (#_DynamicType surface) (#_Geom_Plane::get_type_descriptor))
 			   (let ((a-pnt (#_Location (qt:cast "Geom_Plane" surface))))
 			     (when (> (#_Z a-pnt) z-max)
@@ -98,9 +98,9 @@
 	      (setq my-body (#_Shape thick-solid))))
 
           (let* (;; Threading : Create Surfaces
-		 (a-cyl1 (#_get_handle (#!_new handle_Geom_CylindricalSurface
+		 (a-cyl1 (#_get_handle (#!_new handle_Standard_Transient
 					     (#_new Geom_CylindricalSurface neck-ax3 (* my-neck-radius 0.99d0)))))
-                 (a-cyl2 (#_get_handle (#!_new handle_Geom_CylindricalSurface
+                 (a-cyl2 (#_get_handle (#!_new handle_Standard_Transient
 					     (#_new Geom_CylindricalSurface neck-ax3 (* my-neck-radius 1.05d0)))))
 
 		 ;; Threading : Define 2D Curves
@@ -111,12 +111,12 @@
                  (a-minor (/ my-neck-height 10.0d0))
                  (an-ellipse1 (#_new Geom2d_Ellipse an-ax2d a-major a-minor))
                  (an-ellipse2 (#_new Geom2d_Ellipse an-ax2d a-major (/ a-minor 4.0d0)))
-                 (an-arc1 (#_get_handle (#!_new handle_Geom2d_TrimmedCurve
+                 (an-arc1 (#_get_handle (#!_new handle_Standard_Transient
 					      (#_new Geom2d_TrimmedCurve
-						     (#_get_handle (#!_new handle_Geom2d_Ellipse an-ellipse1)) 0.0d0 pi))))
-                 (an-arc2 (#_get_handle (#!_new handle_Geom2d_TrimmedCurve
+						     (#_get_handle (#!_new handle_Standard_Transient an-ellipse1)) 0.0d0 pi))))
+                 (an-arc2 (#_get_handle (#!_new handle_Standard_Transient
 					      (#_new Geom2d_TrimmedCurve
-						     (#_get_handle (#!_new handle_Geom2d_Ellipse an-ellipse2)) 0.0d0 pi))))
+						     (#_get_handle (#!_new handle_Standard_Transient an-ellipse2)) 0.0d0 pi))))
                  (an-ellipse-pnt1 (#_Value an-ellipse1 0.0d0))
                  (an-ellipse-pnt2 (#_Value an-ellipse1 pi))
                  (a-segment (#!_new GCE2d_MakeSegment an-ellipse-pnt1 an-ellipse-pnt2))
