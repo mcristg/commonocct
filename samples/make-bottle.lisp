@@ -1,6 +1,6 @@
 ;;; https://github.com/Open-Cascade-SAS/OCCT/blob/master/samples/qt/Tutorial/src/MakeBottle.cxx
 
-;; (load "~/dev/commonocct/commonocct/samples/make-bottle1.lisp")
+;; (load "~/dev/commonocct/commonocct/samples/make-bottle.lisp")
 ;; sbcl --dynamic-space-size 4096
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
