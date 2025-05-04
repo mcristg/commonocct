@@ -82,7 +82,7 @@
       (loop while (#_More a-face-explorer)
 	    do (let ((face (#_TopoDS::Face (#_Current a-face-explorer))))
 		 ;; Check if <aFace> is the top face of the bottle’s neck
-		 (let ((surface (#_handle_Standard_Transient::get_Geom_Surface (#_BRep_Tool::Surface face))))
+		 (let ((surface (#_handle::get_Geom_Surface (#_BRep_Tool::Surface face))))
 		   (when (cffi:pointer-eq (#_DynamicType surface) (#_Geom_Plane::get_type_descriptor))
 		     (let ((a-pnt (#_Location (cast "Geom_Plane" surface))))
 		       (when (> (#_Z a-pnt) z-max)
@@ -103,9 +103,9 @@
 		   (neck-location (#_new gp_Pnt 0 0 my-height))
 		   (neck-ax2 (#_new gp_Ax2 neck-location neck-axis))
 		   (neck-ax3 (#_new gp_Ax3 neck-ax2))
-		   (a-cyl1 (#_new handle_Standard_Transient
+		   (a-cyl1 (#_new handle
 				  (#_new Geom_CylindricalSurface neck-ax3 (* my-neck-radius 0.99d0))))
-		   (a-cyl2 (#_new handle_Standard_Transient
+		   (a-cyl2 (#_new handle
 				  (#_new Geom_CylindricalSurface neck-ax3 (* my-neck-radius 1.05d0))))
 		   ;; Threading : Define 2D Curves
 		   (a-pnt (#_new gp_Pnt2d (* 2 pi) (/ my-neck-height 2)))
@@ -113,11 +113,11 @@
 		   (an-ax2d (#_new gp_Ax2d a-pnt a-dir)))
       (let ((an-ellipse1 (#_new Geom2d_Ellipse an-ax2d a-major a-minor))
 	    (an-ellipse2 (#_new Geom2d_Ellipse an-ax2d a-major (/ a-minor 4.0d0))))
-	(with-objects ((h-an-ellipse1 (#_new handle_Standard_Transient an-ellipse1))
-		       (h-an-ellipse2 (#_new handle_Standard_Transient an-ellipse2))
-		       (an-arc1 (#_new handle_Standard_Transient
+	(with-objects ((h-an-ellipse1 (#_new handle an-ellipse1))
+		       (h-an-ellipse2 (#_new handle an-ellipse2))
+		       (an-arc1 (#_new handle
 				       (#_new Geom2d_TrimmedCurve (#_get_handle h-an-ellipse1) 0.0d0 pi)))
-		       (an-arc2 (#_new handle_Standard_Transient
+		       (an-arc2 (#_new handle
 				       (#_new Geom2d_TrimmedCurve (#_get_handle h-an-ellipse2) 0.0d0 pi))))
 	  (let ((an-ellipse-pnt1 (#_Value an-ellipse1 0.0d0))
 		(an-ellipse-pnt2 (#_Value an-ellipse1 pi)))
