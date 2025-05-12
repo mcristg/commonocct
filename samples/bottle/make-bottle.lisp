@@ -82,8 +82,9 @@
       (loop while (#_More a-face-explorer)
 	    do (let ((face (#_TopoDS::Face (#_Current a-face-explorer))))
 		 ;; Check if <aFace> is the top face of the bottle’s neck
-		 (let ((surface (#_handle::get_Geom_Surface (#_BRep_Tool::Surface face))))
-		   (when (cffi:pointer-eq (#_DynamicType surface) (#_Geom_Plane::get_type_descriptor))
+		 (let ((surface (#_handle::get_Standard_Transient (#_BRep_Tool::Surface face))))
+		   ;; Use run-time type information (RTTI) for OCCT classes inheriting from Standard_Transient. 
+		   (when (string= (#_Name (#_handle::get_Standard_Type (#_DynamicType surface))) "Geom_Plane")
 		     (let ((a-pnt (#_Location (cast "Geom_Plane" surface))))
 		       (when (> (#_Z a-pnt) z-max)
 			 (setq z-max (#_Z a-pnt)
