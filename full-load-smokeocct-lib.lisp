@@ -58,7 +58,6 @@
     (qt:ensure-smoke :TKXSBase)
     (qt:ensure-smoke :TKExpress)
     (qt:ensure-smoke :TKDESTEP)
-    (qt:ensure-smoke :TKHDESTEP)
     (qt:ensure-smoke :TKBinXCAF)
     (qt:ensure-smoke :TKXmlXCAF)
     (qt:ensure-smoke :TKDEIGES)
